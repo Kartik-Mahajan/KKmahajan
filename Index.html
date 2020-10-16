@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Todo application</title>
+    <link rel="stylesheet" href="CSS/Todo.css">
+</head>
+<body>
+    <div id="container">
+        <div class="controls">
+            <h1>My Todo</h1>
+            <input type="text" id ="input" placeholder="Enter the Todo to be added"><br>
+            <button type="button" id="add">ADD Todo</button>
+            <button type="button" id="remove">REMOVE Todo</button>
+            <button type="button" id="removeAll">REMOVE All Todo</button>
+        </div>
+        <ul id="list">
+            <li class="mycheck">
+                <input type="checkbox" id="check">
+                <label for="cehck">Go to Gym</label>
+            </li>
+            <li class="mycheck">
+                <input type="checkbox" id="check" checked>
+                <label for="cehck">Basketball Session</label>
+            </li>
+            <li class="mycheck">
+                <input type="checkbox" id="check" checked>
+                <label for="cehck">Buy Grocessry</label>
+            </li>
+        </ul>
+    </div>
+    <Script src="JS/Todo.js"></Script>
+</body>
+</html>
