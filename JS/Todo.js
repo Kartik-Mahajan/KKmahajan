@@ -2,35 +2,31 @@ var ul = document.getElementById("list");
 var li;
 let div = document.querySelector(".controls");
 
-var addButton = document.getElementById("add");
-addButton.addEventListener("click",addItem)
-
-var removeButton = document.getElementById("remove");
-removeButton.addEventListener("click",removeItem)
-
-var removeAllButton = document.getElementById("removeAll");
-removeAllButton.addEventListener("click",removeAll)
+var addButton = document.getElementById("add").addEventListener("click",addItem);
+var removeButton = document.getElementById("remove").addEventListener("click",removeItem);
+var removeAllButton = document.getElementById("removeAll").addEventListener("click",removeAll);
 
 function addItem(){
-    var enteryBar = document.getElementById("input");
-    var item = enteryBar.value;
+    var item = document.getElementById("input").value;
     var textNode = document.createTextNode(item);
-    
+    var errorValue = document.getElementById("error");
     if(item === ""){
-        var pTag = document.createElement("p") //Adding P tag
-        var text = document.createTextNode("Todo cannot be Null") // creating text 
-        pTag.appendChild(text); // merging P tag and text
-        document.querySelector("div").appendChild(pTag); // where to be appended
-        div.insertAdjacentElement("afterend",pTag) // div is variable mentioned at top
-        document.querySelector("p").style.color ="red";
-        document.querySelector("p").style.fontWeight ="Bold";
-        document.querySelector("p").style.fontSize ="25px";
-        document.querySelector("p").style.opacity ="1";
-        setTimeout(()=>{
-            document.querySelector("p").style.opacity ="0";
-        },4000);
-        
+        if(!errorValue.innerHTML) {
+            var pTag = document.createElement("p") //Adding P tag
+            pTag.setAttribute("id", "errorPara");
+            var text = document.createTextNode("Todo cannot be Null") // creating text 
+            pTag.appendChild(text); // merging P tag and text
+            document.getElementById("error").appendChild(pTag); // where to be appended
+            document.querySelector("p").style.color ="red";
+            document.querySelector("p").style.fontWeight ="Bold";
+            document.querySelector("p").style.fontSize ="25px";
+        } else {
+        }
     }else{
+        var errorPara = errorValue.querySelector("p");
+        if(errorPara) {
+            errorPara.remove();
+        }
         li = document.createElement("li"); // create li
         var input = document.createElement("input");
         input.type ="checkbox"; // crete checbox
@@ -50,7 +46,7 @@ function addItem(){
         setTimeout(()=>{ //For some effects
             li.className="visual"; //class we cretaed in CSS
         },250);
-        enteryBar.value =""; // to Clear the input field
+        item =""; // to Clear the input field
     }
 }
 
